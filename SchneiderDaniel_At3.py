@@ -75,6 +75,12 @@ def nb_sup(L:list, e:int):
     return(liste)
 
 def nb_sup2(L:list, e:int):
+    """Valeur supérieures a un nombre donné
+
+    Args:
+        L (list): 
+        e (int): 
+    """
     i = 0
     for c in range(len(L)):
         if L[c] > e:
@@ -84,21 +90,39 @@ def nb_sup2(L:list, e:int):
 #nb_sup([1,2,3,4], 2)
 
 
-def moy_sup(L, e):
+def moy_sup(L:list, e:int):
+    """[summary]
+
+    Args:
+        L (list): 
+        e (int): 
+    """
     L = nb_sup(L, e)
     moyenne(L)
     
 
 #moy_sup([1,2,3,4], 2)
 
-def val_max(L):
+def val_max(L:list):
+    """[summary]
+
+    Args:
+        L (list): 
+    """
     max_nb = ""
     max_nb = max(L)
     return(max_nb)
 
 #val_max([1,2,3,4])
 
-def ind_max(L):
+def ind_max(L:list):
+
+    """[summary]
+
+    Args:
+        L (list): [description]
+    """
+
     i = 0
     while len(L) > i:
         i = i + 1
@@ -109,17 +133,68 @@ def ind_max(L):
 
 #---------------------------------------------------------------------------------------
 
-def position(L, e):
-    liste = []
-    for i in range(len(L)):
-        if L[i] != e:
+def positionFor(L:list, e:int):
+    """Recherche entier identique dans une liste
 
-            liste.append(L[i])
-            if L[i] == e:
-                message = -1
-    
-    return(print(message))
-        
-    
+    Args:
+        L (list): 
+        e (int): 
+    """
+
+    message = 0
+    for i in range(len(L)):
+        if L[i] == e:
+            message = -1
+            return(message)
             
-position([1,2,3,4], 5)
+#positionFor([1,2,3,4], 5)
+
+def positionWhile(L:list, e:int):
+    """[summary]
+
+    Args:
+        L (list): 
+        e (int): 
+    """
+    message = 0
+    i = 0 
+    while i < len(L):
+        if L[i] == e:
+            message = -1
+            return(print(message))
+        i = i + 1
+
+#positionWhile([1,2,3,4], 5)
+
+def nb_occurences(L:list,e:int):
+    """Nombre d'occurence d'un nombre donné dans une liste
+
+    Args:
+        L (list):
+        e (int): 
+    """
+    nbOccurence = 0
+    for i in range(len(L)):
+        if L[i] == e:
+            nbOccurence = nbOccurence + 1
+    return(nbOccurence)
+
+#nb_occurences([1,2,3,4], 3)
+
+def est_triee_for(L:list):
+    liste = []
+    o = 0
+    for i in range(len(L) - 1):
+        if L[i] < L[i + 1]:
+            print("a modifier")
+            
+
+            
+    return(print(L))
+
+        
+
+est_triee_for([6,3,5,1])
+
+
+
