@@ -18,7 +18,7 @@ if __name__ == '__main__':
     main()
 
 def exo1(imc:float):
-    """Interprétation en fonction de l'IMC rentré"""
+    """Interprétation en fonction de l'IMC rentrée"""
     interpretation = ""
 
     if imc > 40:
