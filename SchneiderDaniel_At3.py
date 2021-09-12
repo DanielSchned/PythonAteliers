@@ -179,7 +179,7 @@ def nb_occurences(L:list,e:int):
             nbOccurence = nbOccurence + 1
     return(nbOccurence)
 
-#nb_occurences([1,2,3,4], 3)
+print(nb_occurences([1,2,3,3], 3))
 
 def est_triee_for(L:list):
     for i in range(len(L) - 1):
@@ -194,33 +194,74 @@ def est_triee_for(L:list):
 
 def est_triee_while(L:list):
     i = 0
-    while i < len(L):
+    while i < len(L) - 1 :
         if L[i] < L[i + 1]:
             booleen = True
-        else:
+            i = i + 1
+        else: 
             booleen = False
+            i = i + 1
+            break
 
 
     return(booleen)
 
-#print(est_triee_while([1,2,4,4]))
+#print(est_triee_while([1,2,4,5]))
 
 def position_tri(L, e):
     a = 0
     b = len(L) - 1
-    
+
     if est_triee_for(L) ==  True:
 
         while a <= b:
             m = (a + b) // 2
+            
             if L[m] == e:
-                # on a trouvé v
+
                 return True
             elif L[m] < e:
                 a = m + 1
             else:
                 b = m - 1
-        # on a a > b
         return False
 
-position_tri([1,2,4,5], 3)
+#print(position_tri([1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 9))
+
+def a_repetition(L):
+    i = 0
+    o = 0
+    L_t = []
+    booleen = False
+    
+
+    while i < len(L) - 1 :
+
+
+        if L[i+1] == L_t[0]:
+            booleen = True
+            return booleen
+        else:        
+            i = i + 1
+            o = o + 1 
+            if booleen == False:
+                L_t.remove(0)
+                L_t = L_t.append(L[0 + o])
+        
+
+#print(a_repetition([0,1,1,5]))
+
+def separer(L):
+    lst_sep = []
+
+    for i in range(len(L)):
+        o = i // 2
+        if L[i] < 0:
+            lst_sep.insert(0,L[i])
+        if L[i] > 0:
+            lst_sep.append(L[i])
+        if L[i] == 0:
+            lst_sep.insert(o, L[i])        
+    return(lst_sep)
+
+print(separer([-5, -6, -7, -8, 6, 7, 8, 9, -4, -1, 12, 13, 0, 0 , 0]))
