@@ -182,19 +182,45 @@ def nb_occurences(L:list,e:int):
 #nb_occurences([1,2,3,4], 3)
 
 def est_triee_for(L:list):
-    liste = []
-    o = 0
     for i in range(len(L) - 1):
         if L[i] < L[i + 1]:
-            print("a modifier")
+            booleen = True
+        else:
+            booleen = False
+    return(booleen)
             
+    
+#print(est_triee_for([1,2,3,4]))
 
-            
-    return(print(L))
+def est_triee_while(L:list):
+    i = 0
+    while i < len(L):
+        if L[i] < L[i + 1]:
+            booleen = True
+        else:
+            booleen = False
 
-        
 
-est_triee_for([6,3,5,1])
+    return(booleen)
 
+#print(est_triee_while([1,2,4,4]))
 
+def position_tri(L, e):
+    a = 0
+    b = len(L) - 1
+    
+    if est_triee_for(L) ==  True:
 
+        while a <= b:
+            m = (a + b) // 2
+            if L[m] == e:
+                # on a trouvé v
+                return True
+            elif L[m] < e:
+                a = m + 1
+            else:
+                b = m - 1
+        # on a a > b
+        return False
+
+position_tri([1,2,4,5], 3)
