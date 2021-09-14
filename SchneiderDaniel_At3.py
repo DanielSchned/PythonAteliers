@@ -181,7 +181,7 @@ def nb_occurences(L:list,e:int):
             nbOccurence = nbOccurence + 1
     return(nbOccurence)
 
-print(nb_occurences([1,2,3,3], 3))
+#print(nb_occurences([1,2,3,3], 3))
 
 def est_triee_for(L:list):
     for i in range(len(L) - 1):
@@ -262,13 +262,63 @@ def separer(L):
             lst_sep.insert(0,L[i])
         if L[i] > 0:
             lst_sep.append(L[i])
-        if L[i] == 0:
+        else:
             lst_sep.insert(o, L[i])        
     return(lst_sep)
 
 #print(separer([-5, -6, -7, -8, 6, 7, 8, 9, -4, -1, 12, 13, 0, 0 , 0]))
 
-def histo(lst_f):
+def histo(lst_f: list) -> list:
+    """
+    Retourne L'histogramme de la liste en paramètre
+    :param lst_f: list
+    :return: list
+    """
+   
+    MAXTAILLE =  val_max(lst_f) + 1
     lst_h = []
-    
+    for i in range(round(MAXTAILLE)):
+        lst_h.append(nb_occurences(lst_f, i))
+    return lst_h
+
+#print(histo([6,8,3,2,1,5,9,5,3,1,8]))
+
+
+def est_injective(lst_f):
+    lst_f_histo = histo(lst_f)
+    resultat = True
+    i = 0
+    while i < len(lst_f_histo):
+        if lst_f_histo[i] > 1:
+            resultat = False
+        i = i + 1
+    return resultat
+
+# print(est_injective([6,8,3,2,1,5,9,5,3,1,8]))
+# print(histo([6,8,3,2,1,5,9,5,3,1,8]))
+
+def est_surjective(lst_f):
+    lst_f_histo = histo(lst_f)
+    resultat = True
+    i = 0
+    while i < len(lst_f_histo):
+        if lst_f_histo[i] < 1:
+            resultat = False
+        i = i + 1
+    return resultat
+ 
+# print(est_surjective([6,8,3,2,1,5,9,5,3,1,8]))
+# print(histo([6,8,3,2,1,5,9,5,3,1,8]))
+
+def est_bijective(lst_f):
+    resultat = False
+    if est_surjective(lst_f) == True and est_injective(lst_f) == True:
+        resultat = True
+    return(resultat)
+
+# print(est_bijective([0,1,2,3,4,5,6,7,8,9]))
+# print(est_injective([0,1,2,3,4,5,6,7,8,9]))
+# print(est_surjective([0,1,2,3,4,5,6,7,8,9]))
+
+# print(histo([0,1,2,3,4,5,6,7,8,9]))
 
