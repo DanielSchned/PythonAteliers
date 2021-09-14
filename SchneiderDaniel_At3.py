@@ -109,11 +109,13 @@ def val_max(L:list):
     Args:
         L (list): 
     """
-    max_nb = ""
-    max_nb = max(L)
-    return(max_nb)
+    resultat = L[0]
+    for i in range(len(L) - 1):
+        if L[i] < L[i + 1]:
+            resultat = L[i+1]
+    return(resultat)
 
-#val_max([1,2,3,4])
+print(val_max([1,2,3,100]))
 
 def ind_max(L:list):
 
@@ -264,4 +266,9 @@ def separer(L):
             lst_sep.insert(o, L[i])        
     return(lst_sep)
 
-print(separer([-5, -6, -7, -8, 6, 7, 8, 9, -4, -1, 12, 13, 0, 0 , 0]))
+#print(separer([-5, -6, -7, -8, 6, 7, 8, 9, -4, -1, 12, 13, 0, 0 , 0]))
+
+def histo(lst_f):
+    lst_h = []
+    
+
