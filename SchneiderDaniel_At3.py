@@ -1,4 +1,5 @@
 
+
 def somme1(L:list):
     """Calcul de la somme des nombre d'une liste avec for in range"""
     somme = 0
@@ -321,4 +322,45 @@ def est_bijective(lst_f):
 # print(est_surjective([0,1,2,3,4,5,6,7,8,9]))
 
 # print(histo([0,1,2,3,4,5,6,7,8,9]))
+
+def affiche_histo(lst_f):
+    histo_lst_f = histo(lst_f)
+    print(str(histo_lst_f) + "\n")
+    MAXOCC = round(val_max(histo_lst_f))
+    for i in range(MAXOCC):
+        for e in histo_lst_f:
+            if e >= MAXOCC - i:
+
+                print("  # ",end="")
+            else:
+                print("    ",end="")
+        print("\n")
+
+    for j in range(len(histo_lst_f)):
+        print("| --",end="")
+        
+    print("|\n")
+    for k in range(len(histo_lst_f)):
+        print("  " + str(k) + " ",end="")
+
+
+#affiche_histo([0,2,3,2,2,4,4,3,1,1])
+
+# import matplotlib.pyplot
+# import matplotlib.pyplot as plt 
+
+# def affiche_histo_matplot(lst_f):
+#     plt.hist(lst_f)
+#     matplotlib.pyplot.show()
+
+# affiche_histo_matplot([0,2,3,2,2,4,4,3,1,1])
+
+def present(lst,e):
+    booleen = False
+    for i in range(len(lst)):
+        if e == lst[i]:
+            booleen = True
+    return(booleen)
+
+print(present([1,2,3,4], 5))
 
