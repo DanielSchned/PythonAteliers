@@ -47,8 +47,8 @@ def mots_Nlettres(lst_mot, n):
     """[summary]
 
     Args:
-        lst_mot ([type]): [description]
-        n ([type]): [description]
+        lst_mot ([list]): [description]
+        n ([int]): [description]
     """
     lst_mot_n = []
     
@@ -99,7 +99,7 @@ def commencent_par(lst_mot, prefixe):
     lst = []
     for i in range(len(lst_mot)):
         mot = lst_mot[i]
-        if commence_par(mot, prefixe) == True:
+        if commence_par(mot, prefixe):
             lst.append(mot)
     return lst
 
@@ -110,7 +110,7 @@ def liste_mots(lst_mot, prefixe, suffixe, n):
     lst_f = finissent_par(lst_mot, suffixe)
     lst_c = commencent_par(lst_f, prefixe)
     lst_m = mots_Nlettres(lst_c, n)
-    return(print(lst_m))
+    return(lst_m)
 
 #liste_mots(["jouer","bonjour", "aimez", "jour", "aurevoir", "revoir", "pouvoir", "cour", "abajour",  "aimons", "aimer"], "ai", "er", 5)
 
@@ -131,12 +131,11 @@ def dictionnaire(fichier):
 
 def places_lettres(ch:str, mot:str):
     j = 0
-    lst_ch = []
-    if ch in mot:
-        for i in range(len(mot)):
-            if mot[i] == ch:
-                j = j + 1  
-                lst_ch.append(i)
+    lst_ch = []  
+    for i in range(len(mot)):
+        if mot[i] == ch:
+            j = j + 1  
+            lst_ch.append(i)
     print(lst_ch)            
             
     print(j)
@@ -155,7 +154,7 @@ def outputStr(mot, lpos):
     
 # outputStr("bonjour", [0,2])    
 # outputStr("bonjour", [])
-def build(fichier):
+def build_list(fichier):
     file, content = open(fichier), []
     content.append(file.readline())
     while content[len(content)-1] != '':
@@ -165,13 +164,13 @@ def build(fichier):
     return content
 
 
-def runGame(fichier):
+def runGame():
     
-    lst_mot = build(fichier)
+    #lst_mot = build_list(fichier)
     lst_m = ["jouer","bonjour", "aimez", "jour", "aurevoir", "revoir", "pouvoir", "cour", "abajour",  "aimons", "aimer"]
     k = random.randrange(0, len(lst_m))
     mot = lst_m[k]
-    nb_tentative = 5
+    nb_tentative = 8
     mot_r, compt, lst_i = outputStr(mot, []), 0, []
     lst_car_dess, dessin = ["\n|________"," \\", "\n|   / ", "\n|    T","\n|    O"], ""
     while len(lst_i) < len(mot_r) and compt < nb_tentative:
@@ -191,7 +190,7 @@ def runGame(fichier):
         print("Gagné")
 
 #runGame("littre.txt")
-    build("littre.txt")
+    
 
 
-runGame("littre.txt")
+#runGame()
